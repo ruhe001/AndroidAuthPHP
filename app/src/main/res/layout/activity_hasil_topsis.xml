@@ -8,40 +8,62 @@
     android:orientation="vertical"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pasar"
-        android:id="@+id/text_pasar"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pendapatan"
-        android:id="@+id/text_pendapatan"
-        />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Infrastruktur"
-        android:id="@+id/text_infrastruktur"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pasar"
+                android:id="@+id/text_pasar"
+                />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transportasi"
-        android:id="@+id/text_transportasi"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pendapatan"
+                android:id="@+id/text_pendapatan"
+                />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lokasi"
-        android:id="@+id/text_lokasi"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Infrastruktur"
+                android:id="@+id/text_infrastruktur"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transportasi"
+                android:id="@+id/text_transportasi"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi"
+                android:id="@+id/text_lokasi"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
