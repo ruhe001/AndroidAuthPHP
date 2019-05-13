@@ -9,7 +9,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
 
     private TextView txt_hasil_pasar,txt_hasil_pendapatan,txt_hasil_infrastruktur,txt_hasil_transportasi
-            ,txt_hasil_lokasi1;
+            ,txt_hasil_lokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
