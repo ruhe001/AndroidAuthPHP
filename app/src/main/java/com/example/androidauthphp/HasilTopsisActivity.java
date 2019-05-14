@@ -25,17 +25,19 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Integer bobot_pasar = intent.getIntExtra("bobot_pasar",0);
-        Integer bobot_pendapatan = intent.getIntExtra("bobot_pendapatan",0);
-        Integer bobot_infrastruktur = intent.getIntExtra("bobot_infrastruktur",0);
-        Integer bobot_transportasi = intent.getIntExtra("bobot_transportasi",0);
+        Integer bobot_pasar = intent.getIntExtra("bobot_pasar1",0);
+        //Integer bobot_pendapatan = intent.getIntExtra("bobot_pendapatan",0);
+        Integer bobot_infrastruktur = intent.getIntExtra("bobot_infrastruktur1",0);
+        Integer bobot_transportasi = intent.getIntExtra("bobot_transportasi1",0);
         String txt_lokasi = intent.getStringExtra("txt_lokasi");
 
-        txt_hasil_pasar.setText(bobot_pasar);
-        txt_hasil_pendapatan.setText(bobot_pendapatan);
-        txt_hasil_infrastruktur.setText(bobot_infrastruktur);
-        txt_hasil_transportasi.setText(bobot_transportasi);
+
+        txt_hasil_pasar.setText(""+bobot_pasar);
+        txt_hasil_pendapatan.setText(""+"ewewew");
+        txt_hasil_infrastruktur.setText(""+bobot_infrastruktur);
+        txt_hasil_transportasi.setText(""+bobot_transportasi);
         txt_hasil_lokasi.setText(txt_lokasi);
+
 
     }
 }

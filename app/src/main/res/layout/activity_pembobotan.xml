@@ -58,6 +58,21 @@
         android:id="@+id/button_next_pembobotan"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="`test json"
+        android:id="@+id/button_test_json"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lokasi"
+        android:id="@+id/text_pasar_json"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

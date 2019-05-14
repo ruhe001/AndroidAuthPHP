@@ -15,22 +15,35 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class PembobotanActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private static final int MY_PERMISSION_REQUEST_CODE = 7171;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 7172;
-    private TextView txt_lokasi;
+
+    private TextView txt_lokasi, txt_pasar_json;
     EditText edt_pasar, edt_pendapatan, edt_infrastruktur, edt_transportasi;
-    Button  btn_bobot_next;
+    Button  btn_bobot_next, btn_json;
     private boolean mRequestingLocationUpdates = false;
+
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -39,8 +52,18 @@ public class PembobotanActivity extends AppCompatActivity implements
     private static int FASTEST_INTERVAL = 3000; //SEC
     private static int DISPLACEMENT = 10; //METERS
 
+    String nama1, nama2, nama3;
+    int pasar1, infrastruktur1, tranportasi1;
+    int pasar2, infrastruktur2, tranportasi2;
+    int pasar3, infrastruktur3, tranportasi3;
+
+    String namaArray[] = new String[3];
+    int pasarArray[] = new int[3];
+    int infrastrukturArray[] = new int[3];
+    int transportasiArray[] = new int [3];
 
 
+    private RequestQueue mQueue; //Volley Queue
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -65,8 +88,13 @@ public class PembobotanActivity extends AppCompatActivity implements
         edt_transportasi = (EditText)findViewById(R.id.edit_transportasi);
 
         txt_lokasi = (TextView)findViewById(R.id.text_lokasi_pembobotan) ;
+        txt_pasar_json = (TextView)findViewById(R.id.text_pasar_json) ;
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
+        btn_json = (Button)findViewById(R.id.button_test_json);
+
+        mQueue = Volley.newRequestQueue(this);
+
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -100,14 +128,47 @@ public class PembobotanActivity extends AppCompatActivity implements
                 final int int_bobot_infrastruktur = Integer.parseInt(text_edt_infrastruktur);
                 final int int_bobot_transportasi = Integer.parseInt(text_edt_transportasi);
 
+                jsonParse();
+
                 Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
+                /* Intent Bobot
                 intentToHasilTopsis.putExtra("bobot_pasar", int_bobot_pasar);
                 intentToHasilTopsis.putExtra("bobot_pendapatan", int_bobot_pendapatan);
                 intentToHasilTopsis.putExtra("bobot_infrastruktur", int_bobot_infrastruktur);
                 intentToHasilTopsis.putExtra("bobot_transportasi", int_bobot_transportasi);
                 intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
+                */
+
+                intentToHasilTopsis.putExtra("bobot_pasar1", pasarArray[0]);
+                intentToHasilTopsis.putExtra("bobot_infrastruktur1", infrastrukturArray[0]);
+                intentToHasilTopsis.putExtra("bobot_transportasi1", transportasiArray[0]);
+                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
+
+                intentToHasilTopsis.putExtra("bobot_pasar2", pasarArray[1]);
+                intentToHasilTopsis.putExtra("bobot_infrastruktur2", infrastrukturArray[1]);
+                intentToHasilTopsis.putExtra("bobot_transportasi2", transportasiArray[1]);
+                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
+
+                intentToHasilTopsis.putExtra("bobot_pasar3", pasarArray[2]);
+                intentToHasilTopsis.putExtra("bobot_infrastruktur3", infrastrukturArray[2]);
+                intentToHasilTopsis.putExtra("bobot_transportasi3", transportasiArray[2]);
+                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
+
+
                 startActivity(intentToHasilTopsis);
+
+                btn_json.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        jsonParse();
+
+                        txt_pasar_json.setText(pasarArray[0]);
+
+
+                    }
+                });
 
             }
         });
@@ -206,6 +267,48 @@ public class PembobotanActivity extends AppCompatActivity implements
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    private void jsonParse(){
+
+        String url = "http://topsisfhj.xyz/test_array.php";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray = response.getJSONArray(0); //error
+
+                            int i = 0;
+
+                                JSONObject jsonTest = jsonArray.getJSONObject(i);
+
+                                String nama = jsonTest.getString("nama");
+                                int pasar = jsonTest.getInt("pasar");
+                                int inftastruktur = jsonTest.getInt("inftastruktur");
+                                int transportasi = jsonTest.getInt("transportasi");
+
+                                namaArray[i] = nama;
+                                pasarArray[i] = pasar;
+                                infrastrukturArray[i] = inftastruktur;
+                                transportasiArray[i] = transportasi;
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                error.printStackTrace();
+
+            }
+        });
+
+        mQueue.add(request);
     }
 
 }
