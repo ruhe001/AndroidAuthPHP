@@ -38,6 +38,12 @@ public class HasilTopsisActivity extends AppCompatActivity {
         txt_hasil_transportasi.setText(""+bobot_transportasi);
         txt_hasil_lokasi.setText(txt_lokasi);
 
-
     }
+
+//    @Override
+//    public void finish(){
+//        super.finish();
+//        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+//
+//    }
 }

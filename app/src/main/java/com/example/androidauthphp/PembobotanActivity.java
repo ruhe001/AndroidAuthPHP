@@ -157,8 +157,9 @@ public class PembobotanActivity extends AppCompatActivity implements
 
 
                 startActivity(intentToHasilTopsis);
+              //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
-                btn_json.setOnClickListener(new View.OnClickListener() {
+                /*btn_json.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
@@ -168,7 +169,7 @@ public class PembobotanActivity extends AppCompatActivity implements
 
 
                     }
-                });
+                });*/
 
             }
         });
@@ -278,7 +279,7 @@ public class PembobotanActivity extends AppCompatActivity implements
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonArray = response.getJSONArray(0); //error
+                            JSONArray jsonArray = response.getJSONArray(""); //error
 
                             int i = 0;
 
