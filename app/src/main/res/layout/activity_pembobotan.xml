@@ -40,16 +40,26 @@
         android:id="@+id/edit_infrastruktur"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Transportasi"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_transportasi"
-        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transportasi"
+            />
+
+
+    <com.github.florent37.materialtextfield.MaterialTextField
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    app:mtf_labelColor="#666"
+    app:mtf_image="@drawable/ic_action_name">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_transportasi" />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
 
     <Button
         android:layout_width="wrap_content"
