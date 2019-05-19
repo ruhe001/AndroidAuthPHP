@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
@@ -39,9 +40,9 @@ public class PembobotanActivity extends AppCompatActivity implements
     private static final int MY_PERMISSION_REQUEST_CODE = 7171;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 7172;
 
-    private TextView txt_lokasi, txt_pasar_json;
-    EditText edt_pasar, edt_pendapatan, edt_infrastruktur, edt_transportasi;
-    Button  btn_bobot_next, btn_json;
+    private TextView txt_lokasi;
+    EditText edt_harga, edt_jarak, edt_kadaluarsa;
+    Button  btn_bobot_next;
     private boolean mRequestingLocationUpdates = false;
 
     private LocationRequest mLocationRequest;
@@ -52,18 +53,8 @@ public class PembobotanActivity extends AppCompatActivity implements
     private static int FASTEST_INTERVAL = 3000; //SEC
     private static int DISPLACEMENT = 10; //METERS
 
-    String nama1, nama2, nama3;
-    int pasar1, infrastruktur1, tranportasi1;
-    int pasar2, infrastruktur2, tranportasi2;
-    int pasar3, infrastruktur3, tranportasi3;
+    String latd, longd;
 
-    String namaArray[] = new String[3];
-    int pasarArray[] = new int[3];
-    int infrastrukturArray[] = new int[3];
-    int transportasiArray[] = new int [3];
-
-
-    private RequestQueue mQueue; //Volley Queue
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -82,19 +73,11 @@ public class PembobotanActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembobotan);
 
-        edt_pasar = (EditText)findViewById(R.id.edit_pasar);
-        edt_pendapatan = (EditText)findViewById(R.id.edit_pendapatan);
-        edt_infrastruktur = (EditText)findViewById(R.id.edit_infrastruktur);
-        edt_transportasi = (EditText)findViewById(R.id.edit_transportasi);
-
-        txt_lokasi = (TextView)findViewById(R.id.text_lokasi_pembobotan) ;
-        txt_pasar_json = (TextView)findViewById(R.id.text_pasar_json) ;
+        edt_harga = (EditText)findViewById(R.id.edit_harga);
+        edt_jarak = (EditText)findViewById(R.id.edit_jarak);
+        edt_kadaluarsa = (EditText)findViewById(R.id.edit_kadaluarsa);
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
-        btn_json = (Button)findViewById(R.id.button_test_json);
-
-        mQueue = Volley.newRequestQueue(this);
-
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -117,63 +100,21 @@ public class PembobotanActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 startActivity(new Intent(PembobotanActivity.this,HasilTopsisActivity.class));
 
-                final String text_edt_pasar = edt_pasar.getText().toString();
-                final String text_edt_pendapatan = edt_pendapatan.getText().toString();
-                final String text_edt_infrastruktur = edt_infrastruktur.getText().toString();
-                final String text_edt_transportasi = edt_transportasi.getText().toString();
-                final String txt_hasil_lokasi = txt_lokasi.getText().toString();
-
-                final int int_bobot_pasar = Integer.parseInt(text_edt_pasar);
-                final int int_bobot_pendapatan = Integer.parseInt(text_edt_pendapatan);
-                final int int_bobot_infrastruktur = Integer.parseInt(text_edt_infrastruktur);
-                final int int_bobot_transportasi = Integer.parseInt(text_edt_transportasi);
-
-                jsonParse();
+                final String text_edt_harga= edt_harga.getText().toString();
+                final String text_edt_jarak = edt_jarak.getText().toString();
+                final String text_edt_kadaluarsa= edt_kadaluarsa.getText().toString();
 
                 Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
-                /* Intent Bobot
-                intentToHasilTopsis.putExtra("bobot_pasar", int_bobot_pasar);
-                intentToHasilTopsis.putExtra("bobot_pendapatan", int_bobot_pendapatan);
-                intentToHasilTopsis.putExtra("bobot_infrastruktur", int_bobot_infrastruktur);
-                intentToHasilTopsis.putExtra("bobot_transportasi", int_bobot_transportasi);
-                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
-                */
-
-                intentToHasilTopsis.putExtra("bobot_pasar1", pasarArray[0]);
-                intentToHasilTopsis.putExtra("bobot_infrastruktur1", infrastrukturArray[0]);
-                intentToHasilTopsis.putExtra("bobot_transportasi1", transportasiArray[0]);
-                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
-
-                intentToHasilTopsis.putExtra("bobot_pasar2", pasarArray[1]);
-                intentToHasilTopsis.putExtra("bobot_infrastruktur2", infrastrukturArray[1]);
-                intentToHasilTopsis.putExtra("bobot_transportasi2", transportasiArray[1]);
-                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
-
-                intentToHasilTopsis.putExtra("bobot_pasar3", pasarArray[2]);
-                intentToHasilTopsis.putExtra("bobot_infrastruktur3", infrastrukturArray[2]);
-                intentToHasilTopsis.putExtra("bobot_transportasi3", transportasiArray[2]);
-                intentToHasilTopsis.putExtra("txt_lokasi", txt_hasil_lokasi);
-
-
-                startActivity(intentToHasilTopsis);
-              //  overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                /*btn_json.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        jsonParse();
-
-                        txt_pasar_json.setText(pasarArray[0]);
-
-
-                    }
-                });*/
+                //Intent Bobot
+                intentToHasilTopsis.putExtra("bobot_harga", text_edt_harga);
+                intentToHasilTopsis.putExtra("bobot_jarak", text_edt_jarak);
+                intentToHasilTopsis.putExtra("bobot_kadaluarsa", text_edt_kadaluarsa);
+                intentToHasilTopsis.putExtra("txt_latitude", latd);
+                intentToHasilTopsis.putExtra("txt_longitude", longd);
 
             }
         });
-
     }
 
     @Override
@@ -185,9 +126,9 @@ public class PembobotanActivity extends AppCompatActivity implements
     }
     @Override
     protected void onStop(){
-        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient,this);
-        if(mGoogleApiClient != null)
-            mGoogleApiClient.disconnect();
+        //LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient,this);
+        //if(mGoogleApiClient != null)
+         //   mGoogleApiClient.disconnect();
         super.onStop();
     }
 
@@ -202,9 +143,12 @@ public class PembobotanActivity extends AppCompatActivity implements
 
             double latitude = mLastLocation.getLatitude();
             double longitude = mLastLocation.getLongitude();
-            txt_lokasi.setText(latitude + " / " + longitude);
-        } else
-            txt_lokasi.setText("Tidak dapat menemukan lokasi. Pastikan pencarian lokasi diaktifkan pada perangkat");
+            //txt_lokasi.setText(latitude + " / " + longitude);
+            latd = String.valueOf(latitude);
+            longd = String.valueOf(longitude);
+        } else {
+            //txt_lokasi.setText("Tidak dapat menemukan lokasi. Pastikan pencarian lokasi diaktifkan pada perangkat");
+        }
     }
 
     private void startLocationUpdates() {
@@ -269,47 +213,4 @@ public class PembobotanActivity extends AppCompatActivity implements
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-    private void jsonParse(){
-
-        String url = "http://topsisfhj.xyz/test_array.php";
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray(""); //error
-
-                            int i = 0;
-
-                                JSONObject jsonTest = jsonArray.getJSONObject(i);
-
-                                String nama = jsonTest.getString("nama");
-                                int pasar = jsonTest.getInt("pasar");
-                                int inftastruktur = jsonTest.getInt("inftastruktur");
-                                int transportasi = jsonTest.getInt("transportasi");
-
-                                namaArray[i] = nama;
-                                pasarArray[i] = pasar;
-                                infrastrukturArray[i] = inftastruktur;
-                                transportasiArray[i] = transportasi;
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                error.printStackTrace();
-
-            }
-        });
-
-        mQueue.add(request);
-    }
-
 }

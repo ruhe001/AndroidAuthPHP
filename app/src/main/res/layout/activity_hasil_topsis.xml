@@ -27,40 +27,32 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pasar"
-                android:id="@+id/text_pasar"
+                android:text="Nama"
+                android:id="@+id/text_nama"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pendapatan"
-                android:id="@+id/text_pendapatan"
+                android:text="Harga"
+                android:id="@+id/text_harga"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Infrastruktur"
-                android:id="@+id/text_infrastruktur"
+                android:text="Kadaluarsa"
+                android:id="@+id/text_kadaluarsa"
                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transportasi"
-                android:id="@+id/text_transportasi"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lokasi"
-                android:id="@+id/text_lokasi"
-                />
-
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="`next"
+            android:id="@+id/button_next_hasil"
+            />
 
 
     </LinearLayout>
