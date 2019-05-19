@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Harga"
+        android:text="Bobot Harga"
         />
     <EditText
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jarak"
+        android:text="Bobot Jarak"
         />
     <EditText
         android:layout_width="wrap_content"
@@ -34,16 +34,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kadaluarsa"
+        android:text="Bobot Kemudahan Akses"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_kadaluarsa"
+        android:id="@+id/edit_akses"
         android:inputType="number"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bobot Fasilitas"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_fasilitas"
+        android:inputType="number"
+        />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bobot Nilai Edukasi"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_edukasi"
+        android:inputType="number"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -41,7 +41,7 @@ public class PembobotanActivity extends AppCompatActivity implements
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 7172;
 
     private TextView txt_lokasi;
-    EditText edt_harga, edt_jarak, edt_kadaluarsa;
+    EditText edt_harga, edt_jarak, edt_akses , edt_fasilitas, edt_edukasi;
     Button  btn_bobot_next;
     private boolean mRequestingLocationUpdates = false;
 
@@ -75,7 +75,9 @@ public class PembobotanActivity extends AppCompatActivity implements
 
         edt_harga = (EditText)findViewById(R.id.edit_harga);
         edt_jarak = (EditText)findViewById(R.id.edit_jarak);
-        edt_kadaluarsa = (EditText)findViewById(R.id.edit_kadaluarsa);
+        edt_akses = (EditText)findViewById(R.id.edit_akses);
+        edt_fasilitas = (EditText)findViewById(R.id.edit_fasilitas);
+        edt_edukasi = (EditText)findViewById(R.id.edit_edukasi);
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
 
@@ -102,14 +104,18 @@ public class PembobotanActivity extends AppCompatActivity implements
 
                 final String text_edt_harga= edt_harga.getText().toString();
                 final String text_edt_jarak = edt_jarak.getText().toString();
-                final String text_edt_kadaluarsa= edt_kadaluarsa.getText().toString();
+                final String text_edt_akses= edt_akses.getText().toString();
+                final String text_edt_fasilitas= edt_fasilitas.getText().toString();
+                final String text_edt_edukasi= edt_edukasi.getText().toString();
 
                 Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
                 //Intent Bobot
                 intentToHasilTopsis.putExtra("bobot_harga", text_edt_harga);
                 intentToHasilTopsis.putExtra("bobot_jarak", text_edt_jarak);
-                intentToHasilTopsis.putExtra("bobot_kadaluarsa", text_edt_kadaluarsa);
+                intentToHasilTopsis.putExtra("bobot_akses", text_edt_akses);
+                intentToHasilTopsis.putExtra("bobot_fasilitas", text_edt_fasilitas);
+                intentToHasilTopsis.putExtra("bobot_edukasi", text_edt_edukasi);
                 intentToHasilTopsis.putExtra("txt_latitude", latd);
                 intentToHasilTopsis.putExtra("txt_longitude", longd);
 
