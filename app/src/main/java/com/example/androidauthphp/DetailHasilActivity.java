@@ -18,6 +18,7 @@ public class DetailHasilActivity extends AppCompatActivity {
     Uri gmmIntentUri;
     Intent mapIntent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

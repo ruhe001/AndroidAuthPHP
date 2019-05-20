@@ -32,6 +32,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
     String edukasiArray[] = new String[3];
     String latitudeArray[] = new String[3];
     String longitudeArray[] = new String[3];
+    String gambarArray[]= new String[3];
 
     Button btn_next_hasil;
 
@@ -63,18 +64,20 @@ public class HasilTopsisActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
         jsonParse(txt_latitude, txt_longitude, bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi);
 
+        txt_hasil_nama.setText(namaArray[1]);
+        txt_hasil_harga.setText(hargaArray[1]);
+        txt_hasil_akses.setText(aksesArray[1]);
+        txt_hasil_fasilitas.setText(fasilitasArray[1]);
+        txt_hasil_edukasi.setText(edukasiArray[1]);
+
         btn_next_hasil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HasilTopsisActivity.this,DetailHasilActivity.class));
+
 
                 Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
 
-                txt_hasil_nama.setText(namaArray[0]);
-                txt_hasil_harga.setText(hargaArray[0]);
-                txt_hasil_akses.setText(aksesArray[0]);
-                txt_hasil_fasilitas.setText(fasilitasArray[0]);
-                txt_hasil_edukasi.setText(edukasiArray[0]);
+
 
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[1]);
@@ -92,16 +95,19 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
     }
 
-    private void jsonParse(String txtLatitude, String txtLongitude, String bobot_harga, String bobot_jarak, String bobot_akses, String bobot_fasilitas, String bobot_edukasi){
+    private void jsonParse(String txtLatitude, String txtLongitude,
+                           String bobot_harga, String bobot_jarak,
+                           String bobot_akses, String bobot_fasilitas, String bobot_edukasi){
 
         String url = "http://topsisfhj.xyz/TOPSIS_WISATA_BATU/topsis_wisata.php?"
-                +"lat="+txt_latitude
-                +"&long="+txt_longitude
+                +"lat="+txtLatitude
+                +"&long="+txtLongitude
                 +"&harga="+bobot_harga
                 +"&jarak="+bobot_jarak
-                +"&fasilitas="+bobot_fasilitas
                 +"&akses="+bobot_akses
-                +"&edukasi="+bobot_edukasi;
+                +"&fasilitas="+bobot_fasilitas
+                +"&edukasi="+bobot_edukasi
+                +"&jum_rekomendasi=3";
 
          JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -113,14 +119,14 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
                                 JSONObject jsonTest = response.getJSONObject(i);
 
-                                namaArray[i] = jsonTest.getString("name");
+                                namaArray[i] = jsonTest.getString("nama_tempat");
                                 hargaArray[i] = jsonTest.getString("harga");
                                 aksesArray[i] = jsonTest.getString("akses");
                                 fasilitasArray[i] = jsonTest.getString("fasilitas");
                                 edukasiArray[i] = jsonTest.getString("edukasi");
                                 latitudeArray[i] = jsonTest.getString("latitude");
                                 longitudeArray[i] = jsonTest.getString("longitude");
-
+                                /*gambarArray[i] = jsonTest.getString("gambar");*/
                                 /*
                                 namaArray[i] = name;
                                 hargaArray[i] = harga;

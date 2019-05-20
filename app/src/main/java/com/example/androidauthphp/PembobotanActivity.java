@@ -100,7 +100,6 @@ public class PembobotanActivity extends AppCompatActivity implements
         btn_bobot_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PembobotanActivity.this,HasilTopsisActivity.class));
 
                 final String text_edt_harga= edt_harga.getText().toString();
                 final String text_edt_jarak = edt_jarak.getText().toString();
@@ -118,7 +117,7 @@ public class PembobotanActivity extends AppCompatActivity implements
                 intentToHasilTopsis.putExtra("bobot_edukasi", text_edt_edukasi);
                 intentToHasilTopsis.putExtra("txt_latitude", latd);
                 intentToHasilTopsis.putExtra("txt_longitude", longd);
-
+                startActivity(intentToHasilTopsis);
             }
         });
     }
