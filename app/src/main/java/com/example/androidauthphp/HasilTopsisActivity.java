@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class HasilTopsisActivity extends AppCompatActivity {
 
 
-    private TextView txt_hasil_nama,txt_hasil_harga,txt_hasil_akses,txt_hasil_fasilitas,txt_hasil_edukasi;
+    private TextView txt_hasil_nama,txt_hasil_harga,txt_hasil_akses,txt_hasil_fasilitas,txt_hasil_edukasi,txt_hasil_url_gambar;
 
     String bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi, txt_latitude, txt_longitude;
 
@@ -48,6 +48,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
         txt_hasil_akses = (TextView)findViewById(R.id.text_akses);
         txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas);
         txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi);
+//        txt_hasil_url_gambar = (TextView)findViewById(R.id.text_url_gambar);
 
         btn_next_hasil = (Button)findViewById(R.id.button_next_hasil);
 
@@ -76,14 +77,14 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
 
                 //Intent Bobot
-                intentToDetail.putExtra("hasil_nama", namaArray[1]);
-                intentToDetail.putExtra("hasil_harga", hargaArray[1]);
-                intentToDetail.putExtra("hasil_akses", aksesArray[1]);
-                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[1]);
-                intentToDetail.putExtra("hasil_edukasi", edukasiArray[1]);
-                intentToDetail.putExtra("hasil_latitude", latitudeArray[1]);
-                intentToDetail.putExtra("hasil_longitude", longitudeArray[1]);
-
+                intentToDetail.putExtra("hasil_nama", namaArray[0]);
+                intentToDetail.putExtra("hasil_harga", hargaArray[0]);
+                intentToDetail.putExtra("hasil_akses", aksesArray[0]);
+                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[0]);
+                intentToDetail.putExtra("hasil_edukasi", edukasiArray[0]);
+                intentToDetail.putExtra("hasil_latitude", latitudeArray[0]);
+                intentToDetail.putExtra("hasil_longitude", longitudeArray[0]);
+                intentToDetail.putExtra("hasil_gambar", gambarArray[0]);
                 startActivity(intentToDetail);
 
             }
@@ -122,26 +123,29 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 edukasiArray[i] = jsonTest.getString("edukasi");
                                 latitudeArray[i] = jsonTest.getString("latitude");
                                 longitudeArray[i] = jsonTest.getString("longitude");
-                                txt_hasil_nama.setText(namaArray[i]);
-                                txt_hasil_harga.setText(hargaArray[i]);
-                                txt_hasil_akses.setText(aksesArray[i]);
-                                txt_hasil_fasilitas.setText(fasilitasArray[i]);
-                                txt_hasil_edukasi.setText(edukasiArray[i]);
-                                /*gambarArray[i] = jsonTest.getString("gambar");*/
-                                /*
-                                namaArray[i] = name;
-                                hargaArray[i] = harga;
-                                kadaluarsaArray[i] = kadaluarsa;
-                                latitudeArray[i] = latitude;
-                                longitudeArray[i] = longitude;
+                                gambarArray[i] = jsonTest.getString("url");
 
 
+                                txt_hasil_nama.setText(namaArray[1]);
+                                txt_hasil_harga.setText(hargaArray[1]);
+                                txt_hasil_akses.setText(aksesArray[1]);
+                                txt_hasil_fasilitas.setText(fasilitasArray[1]);
+                                txt_hasil_edukasi.setText(edukasiArray[1]);
+//                                txt_hasil_url_gambar.setText(gambarArray[1]);
 
-                                txt_hasil_nama.setText(namaArray[i]);
-                                txt_hasil_harga.setText(hargaArray[i]);
-                                txt_hasil_kadaluarsa.setText(kadaluarsaArray[i]);
+//                                namaArray[i] = name;
+//                                hargaArray[i] = harga;
+//                                kadaluarsaArray[i] = kadaluarsa;
+//                                latitudeArray[i] = latitude;
+//                                longitudeArray[i] = longitude;
+//
+//
+//
+//                                txt_hasil_nama.setText(namaArray[i]);
+//                                txt_hasil_harga.setText(hargaArray[i]);
+//                                txt_hasil_kadaluarsa.setText(kadaluarsaArray[i]);
 
-                                */
+
 
                             }
 

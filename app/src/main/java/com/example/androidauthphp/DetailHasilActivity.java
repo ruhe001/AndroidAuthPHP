@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class DetailHasilActivity extends AppCompatActivity {
 
     ImageView img_detail_tempat, img_detail_lokasi;
     TextView txt_detail_nama, txt_detail_harga, txt_detail_kadaluarsa;
 
-    String detail_nama, detail_harga, detail_kadaluarsa, detail_lat, detail_long;
+    String detail_nama, detail_harga, detail_kadaluarsa, detail_lat, detail_long,gambar;
 
     Uri gmmIntentUri;
     Intent mapIntent;
@@ -27,6 +29,7 @@ public class DetailHasilActivity extends AppCompatActivity {
         img_detail_tempat = (ImageView)findViewById(R.id.image_detail_tempat);
         img_detail_lokasi = (ImageView)findViewById(R.id.image_detail_lokasi);
 
+
         txt_detail_nama = (TextView)findViewById(R.id.text_detail_nama);
         txt_detail_harga = (TextView)findViewById(R.id.text_detail_harga);
         txt_detail_kadaluarsa = (TextView)findViewById(R.id.text_detail_kadaluarsa);
@@ -38,7 +41,9 @@ public class DetailHasilActivity extends AppCompatActivity {
         detail_kadaluarsa = intent.getStringExtra("hasil_kadaluarsa");
         detail_lat = intent.getStringExtra("hasil_latitude");
         detail_long= intent.getStringExtra("hasil_longitude");
+        gambar = intent.getStringExtra("hasil_gambar");
 
+        Picasso.with(this).load(gambar).into(img_detail_lokasi);
         //if (detail_nama != null){
             txt_detail_nama.setText(detail_nama);
             txt_detail_harga.setText(detail_harga);
