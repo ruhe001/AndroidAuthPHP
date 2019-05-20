@@ -64,11 +64,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
         jsonParse(txt_latitude, txt_longitude, bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi);
 
-        txt_hasil_nama.setText(namaArray[1]);
-        txt_hasil_harga.setText(hargaArray[1]);
-        txt_hasil_akses.setText(aksesArray[1]);
-        txt_hasil_fasilitas.setText(fasilitasArray[1]);
-        txt_hasil_edukasi.setText(edukasiArray[1]);
+
 
         btn_next_hasil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +122,11 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 edukasiArray[i] = jsonTest.getString("edukasi");
                                 latitudeArray[i] = jsonTest.getString("latitude");
                                 longitudeArray[i] = jsonTest.getString("longitude");
+                                txt_hasil_nama.setText(namaArray[i]);
+                                txt_hasil_harga.setText(hargaArray[i]);
+                                txt_hasil_akses.setText(aksesArray[i]);
+                                txt_hasil_fasilitas.setText(fasilitasArray[i]);
+                                txt_hasil_edukasi.setText(edukasiArray[i]);
                                 /*gambarArray[i] = jsonTest.getString("gambar");*/
                                 /*
                                 namaArray[i] = name;
