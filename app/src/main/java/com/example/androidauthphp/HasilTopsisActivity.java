@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -24,6 +25,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
     private TextView txt_hasil_nama,txt_hasil_harga,txt_hasil_akses,txt_hasil_fasilitas,txt_hasil_edukasi,txt_hasil_url_gambar;
 
     String bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi, txt_latitude, txt_longitude;
+    private LinearLayout linear1, linear2, linear3;
 
     String namaArray[] = new String[3];
     String hargaArray[] = new String[3];
@@ -32,7 +34,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
     String edukasiArray[] = new String[3];
     String latitudeArray[] = new String[3];
     String longitudeArray[] = new String[3];
-    String gambarArray[]= new String[3];
+    String gambarArray[] = new String[3];
+    String deskripsiArray[]= new String[3];
 
     Button btn_next_hasil;
 
@@ -43,15 +46,28 @@ public class HasilTopsisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_topsis);
 
-        txt_hasil_nama = (TextView)findViewById(R.id.text_nama);
-        txt_hasil_harga = (TextView)findViewById(R.id.text_harga);
-        txt_hasil_akses = (TextView)findViewById(R.id.text_akses);
-        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas);
-        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi);
+        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
+        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
+        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
+        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
+        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
+
+        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
+        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
+        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
+        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
+        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
+
+        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
+        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
+        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
+        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
+        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
 //        txt_hasil_url_gambar = (TextView)findViewById(R.id.text_url_gambar);
 
-        btn_next_hasil = (Button)findViewById(R.id.button_next_hasil);
-
+        linear1 = (LinearLayout)findViewById(R.id.linear1);
+        linear2 = (LinearLayout)findViewById(R.id.linear2);
+        linear3 = (LinearLayout)findViewById(R.id.linear3);
         Intent intent = getIntent();
 
         bobot_harga = intent.getStringExtra("bobot_harga");
@@ -67,7 +83,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
 
 
-        btn_next_hasil.setOnClickListener(new View.OnClickListener() {
+        linear1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -85,11 +101,57 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_latitude", latitudeArray[0]);
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[0]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[0]);
+                intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[0]);
                 startActivity(intentToDetail);
 
             }
         });
+        linear2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+                Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
+
+
+
+                //Intent Bobot
+                intentToDetail.putExtra("hasil_nama", namaArray[1]);
+                intentToDetail.putExtra("hasil_harga", hargaArray[1]);
+                intentToDetail.putExtra("hasil_akses", aksesArray[1]);
+                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[1]);
+                intentToDetail.putExtra("hasil_edukasi", edukasiArray[1]);
+                intentToDetail.putExtra("hasil_latitude", latitudeArray[1]);
+                intentToDetail.putExtra("hasil_longitude", longitudeArray[1]);
+                intentToDetail.putExtra("hasil_gambar", gambarArray[1]);
+                intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[1]);
+                startActivity(intentToDetail);
+
+            }
+        });
+        linear3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
+
+
+
+                //Intent Bobot
+                intentToDetail.putExtra("hasil_nama", namaArray[2]);
+                intentToDetail.putExtra("hasil_harga", hargaArray[2]);
+                intentToDetail.putExtra("hasil_akses", aksesArray[2]);
+                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[2]);
+                intentToDetail.putExtra("hasil_edukasi", edukasiArray[2]);
+                intentToDetail.putExtra("hasil_latitude", latitudeArray[2]);
+                intentToDetail.putExtra("hasil_longitude", longitudeArray[2]);
+                intentToDetail.putExtra("hasil_gambar", gambarArray[2]);
+                intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[2]);
+                startActivity(intentToDetail);
+
+            }
+        });
     }
 
     private void jsonParse(String txtLatitude, String txtLongitude,
@@ -124,13 +186,14 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 latitudeArray[i] = jsonTest.getString("latitude");
                                 longitudeArray[i] = jsonTest.getString("longitude");
                                 gambarArray[i] = jsonTest.getString("url");
+                                deskripsiArray[i]=jsonTest.getString("deskripsi");
 
 
-                                txt_hasil_nama.setText(namaArray[1]);
-                                txt_hasil_harga.setText(hargaArray[1]);
-                                txt_hasil_akses.setText(aksesArray[1]);
-                                txt_hasil_fasilitas.setText(fasilitasArray[1]);
-                                txt_hasil_edukasi.setText(edukasiArray[1]);
+                                txt_hasil_nama.setText(namaArray[0]);
+                                txt_hasil_harga.setText(hargaArray[0]);
+                                txt_hasil_akses.setText(aksesArray[0]);
+                                txt_hasil_fasilitas.setText(fasilitasArray[0]);
+                                txt_hasil_edukasi.setText(edukasiArray[0]);
 //                                txt_hasil_url_gambar.setText(gambarArray[1]);
 
 //                                namaArray[i] = name;

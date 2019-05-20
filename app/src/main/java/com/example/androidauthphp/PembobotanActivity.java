@@ -81,6 +81,8 @@ public class PembobotanActivity extends AppCompatActivity implements
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
 
+
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             //RUNTIME REQUEST PERMISSION
@@ -101,20 +103,39 @@ public class PembobotanActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
 
-                final String text_edt_harga= edt_harga.getText().toString();
-                final String text_edt_jarak = edt_jarak.getText().toString();
-                final String text_edt_akses= edt_akses.getText().toString();
-                final String text_edt_fasilitas= edt_fasilitas.getText().toString();
-                final String text_edt_edukasi= edt_edukasi.getText().toString();
+
+                 String text_edt_harga= edt_harga.getText().toString();
+                 String text_edt_jarak = edt_jarak.getText().toString();
+                 String text_edt_edukasi= edt_edukasi.getText().toString();
+                 String text_edt_akses= edt_akses.getText().toString();
+                 String text_edt_fasilitas= edt_fasilitas.getText().toString();
+
+                double harga1= Double.parseDouble(text_edt_harga);
+                double jarak1= Double.parseDouble(text_edt_jarak);
+                double akses1= Double.parseDouble(text_edt_akses);
+                double fasilitas1= Double.parseDouble(text_edt_fasilitas);
+                double edukasi1= Double.parseDouble(text_edt_edukasi);
+
+                double hitung_harga1=harga1/(harga1+jarak1+akses1+fasilitas1+edukasi1);
+                double hitung_jarak1=jarak1/(harga1+jarak1+akses1+fasilitas1+edukasi1);
+                double hitung_akses1=akses1/(harga1+jarak1+akses1+fasilitas1+edukasi1);
+                double hitung_fasilitas1=fasilitas1/(harga1+jarak1+akses1+fasilitas1+edukasi1);
+                double hitung_edukasi1=edukasi1/(harga1+jarak1+akses1+fasilitas1+edukasi1);
+
+                final String bobotHargaFinal = String.valueOf(hitung_harga1);
+                final String bobotJarakFinal = String.valueOf(hitung_jarak1);
+                final String bobotAksesFinal = String.valueOf(hitung_akses1);
+                final String bobotFasilitasFinal = String.valueOf(hitung_fasilitas1);
+                final String bobotEdukasiFinal = String.valueOf(hitung_edukasi1);
 
                 Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
                 //Intent Bobot
-                intentToHasilTopsis.putExtra("bobot_harga", text_edt_harga);
-                intentToHasilTopsis.putExtra("bobot_jarak", text_edt_jarak);
-                intentToHasilTopsis.putExtra("bobot_akses", text_edt_akses);
-                intentToHasilTopsis.putExtra("bobot_fasilitas", text_edt_fasilitas);
-                intentToHasilTopsis.putExtra("bobot_edukasi", text_edt_edukasi);
+                intentToHasilTopsis.putExtra("bobot_harga", bobotHargaFinal);
+                intentToHasilTopsis.putExtra("bobot_jarak", bobotJarakFinal);
+                intentToHasilTopsis.putExtra("bobot_akses", bobotAksesFinal);
+                intentToHasilTopsis.putExtra("bobot_fasilitas", bobotFasilitasFinal);
+                intentToHasilTopsis.putExtra("bobot_edukasi", bobotEdukasiFinal);
                 intentToHasilTopsis.putExtra("txt_latitude", latd);
                 intentToHasilTopsis.putExtra("txt_longitude", longd);
                 startActivity(intentToHasilTopsis);

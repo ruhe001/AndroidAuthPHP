@@ -9,64 +9,169 @@
     >
 
     <LinearLayout
+        android:id="@+id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="117dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/text_nama1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Tempat"
-                android:id="@+id/text_nama"
-                />
+                android:text="Nama Tempat" />
 
             <TextView
+                android:id="@+id/text_harga1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Harga Tiket Masuk"
-                android:id="@+id/text_harga"
-                />
+                android:text="Harga Tiket Masuk" />
 
             <TextView
+                android:id="@+id/text_akses1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kemudahan Akses"
-                android:id="@+id/text_akses"
-                />
+                android:text="Kemudahan Akses" />
+
             <TextView
+                android:id="@+id/text_fasilitas1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Banyak Fasilitas"
-                android:id="@+id/text_fasilitas"
-                />
+                android:text="Banyak Fasilitas" />
+
             <TextView
+                android:id="@+id/text_edukasi1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nilai Edukasi"
-                android:id="@+id/text_edukasi"
-                />
+                android:text="Nilai Edukasi" />
 
 
         </LinearLayout>
 
-        <Button
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="`next"
-            android:id="@+id/button_next_hasil"
-            />
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/text_nama2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Tempat" />
+
+            <TextView
+                android:id="@+id/text_harga2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga Tiket Masuk" />
+
+            <TextView
+                android:id="@+id/text_akses2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kemudahan Akses" />
+
+            <TextView
+                android:id="@+id/text_fasilitas2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banyak Fasilitas" />
+
+            <TextView
+                android:id="@+id/text_edukasi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nilai Edukasi" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="20dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_nama3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Tempat" />
+
+            <TextView
+                android:id="@+id/text_harga3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga Tiket Masuk" />
+
+            <TextView
+                android:id="@+id/text_akses3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kemudahan Akses" />
+
+            <TextView
+                android:id="@+id/text_fasilitas3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Banyak Fasilitas" />
+
+            <TextView
+                android:id="@+id/text_edukasi3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nilai Edukasi" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
