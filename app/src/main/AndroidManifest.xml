@@ -16,7 +16,6 @@
         <activity android:name="com.example.jodierizkyskripsi.DetailHasilActivity"></activity>
         <activity android:name="com.example.jodierizkyskripsi.HasilTopsisActivity" />
         <activity android:name="com.example.jodierizkyskripsi.PembobotanActivity" />
-        <activity android:name="com.example.jodierizkyskripsi.activity_register" />
         <activity android:name="com.example.jodierizkyskripsi.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

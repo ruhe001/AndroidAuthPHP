@@ -210,18 +210,6 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 txt_hasil_fasilitas3.setText(fasilitasArray[2]);
                                 txt_hasil_edukasi3.setText(edukasiArray[2]);
 
-//                                namaArray[i] = name;
-//                                hargaArray[i] = harga;
-//                                kadaluarsaArray[i] = kadaluarsa;
-//                                latitudeArray[i] = latitude;
-//                                longitudeArray[i] = longitude;
-//
-//
-//
-//                                txt_hasil_nama.setText(namaArray[i]);
-//                                txt_hasil_harga.setText(hargaArray[i]);
-//                                txt_hasil_kadaluarsa.setText(kadaluarsaArray[i]);
-
 
 
                             }

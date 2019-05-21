@@ -15,8 +15,6 @@ public class DetailHasilActivity extends AppCompatActivity {
 
     String detail_nama, detail_harga, detail_deskripsi, detail_lat, detail_long,gambar;
 
-    Uri gmmIntentUri;
-    Intent mapIntent;
 
 
     @Override

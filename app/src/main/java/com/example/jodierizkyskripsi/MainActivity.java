@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Location mLastLocation;
 
     IMyAPI mService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         mService= Common.getAPI();
 
         btn_bobot=(Button) findViewById(R.id.btn_bobot);
-
 
 
         btn_bobot.setOnClickListener(new View.OnClickListener() {

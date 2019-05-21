@@ -161,7 +161,7 @@ public class PembobotanActivity extends AppCompatActivity implements
             latd = String.valueOf(latitude);
             longd = String.valueOf(longitude);
         } else {
-            //txt_lokasi.setText("Tidak dapat menemukan lokasi. Pastikan pencarian lokasi diaktifkan pada perangkat");
+            Toast.makeText(getApplicationContext(),"Perangkat tidak dapat menemukan lokasi. Pastikan pencarian lokasi aktif",Toast.LENGTH_LONG).show();// Set your own toast  message
         }
     }
 
