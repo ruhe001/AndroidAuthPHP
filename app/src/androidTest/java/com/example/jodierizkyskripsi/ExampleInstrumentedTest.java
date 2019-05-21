@@ -1,4 +1,4 @@
-package com.example.androidauthphp;
+package com.example.jodierizkyskripsi;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,7 +1,7 @@
-package com.example.androidauthphp.Common;
+package com.example.jodierizkyskripsi.Common;
 
-import com.example.androidauthphp.Remote.IMyAPI;
-import com.example.androidauthphp.Remote.RetrofitClient;
+import com.example.jodierizkyskripsi.Remote.IMyAPI;
+import com.example.jodierizkyskripsi.Remote.RetrofitClient;
 
 public class Common {
     public static final String BASE_URL="http://topsisfhj.xyz/";

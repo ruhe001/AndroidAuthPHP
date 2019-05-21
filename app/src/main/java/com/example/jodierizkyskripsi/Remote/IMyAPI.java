@@ -1,6 +1,6 @@
-package com.example.androidauthphp.Remote;
+package com.example.jodierizkyskripsi.Remote;
 
-import com.example.androidauthphp.Model.APIResponse;
+import com.example.jodierizkyskripsi.Model.APIResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

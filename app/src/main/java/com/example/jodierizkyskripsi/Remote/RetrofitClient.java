@@ -1,4 +1,4 @@
-package com.example.androidauthphp.Remote;
+package com.example.jodierizkyskripsi.Remote;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

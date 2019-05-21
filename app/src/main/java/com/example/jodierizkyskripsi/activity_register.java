@@ -1,4 +1,4 @@
-package com.example.androidauthphp;
+package com.example.jodierizkyskripsi;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidauthphp.Common.Common;
-import com.example.androidauthphp.Model.APIResponse;
-import com.example.androidauthphp.Remote.IMyAPI;
+import com.example.jodierizkyskripsi.Common.Common;
+import com.example.jodierizkyskripsi.Model.APIResponse;
+import com.example.jodierizkyskripsi.Remote.IMyAPI;
 
 import retrofit2.Call;
 import retrofit2.Callback;

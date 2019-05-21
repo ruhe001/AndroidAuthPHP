@@ -1,4 +1,4 @@
-package com.example.androidauthphp.Model;
+package com.example.jodierizkyskripsi.Model;
 
 public class User {
     private String name;

@@ -1,4 +1,4 @@
-package com.example.androidauthphp;
+package com.example.jodierizkyskripsi;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +22,9 @@ import org.json.JSONObject;
 public class HasilTopsisActivity extends AppCompatActivity {
 
 
-    private TextView txt_hasil_nama,txt_hasil_harga,txt_hasil_akses,txt_hasil_fasilitas,txt_hasil_edukasi,txt_hasil_url_gambar;
+    private TextView txt_hasil_nama1,txt_hasil_harga1,txt_hasil_akses1,txt_hasil_fasilitas1,txt_hasil_edukasi1,txt_hasil_url_gambar,
+            txt_hasil_nama2,txt_hasil_harga2,txt_hasil_akses2,txt_hasil_fasilitas2,txt_hasil_edukasi2,
+    txt_hasil_nama3,txt_hasil_harga3,txt_hasil_akses3,txt_hasil_fasilitas3,txt_hasil_edukasi3;
 
     String bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi, txt_latitude, txt_longitude;
     private LinearLayout linear1, linear2, linear3;
@@ -46,23 +48,23 @@ public class HasilTopsisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_topsis);
 
-        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
-        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
-        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
-        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
-        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
+        txt_hasil_nama1 = (TextView)findViewById(R.id.text_nama1);
+        txt_hasil_harga1 = (TextView)findViewById(R.id.text_harga1);
+        txt_hasil_akses1 = (TextView)findViewById(R.id.text_akses1);
+        txt_hasil_fasilitas1 = (TextView)findViewById(R.id.text_fasilitas1);
+        txt_hasil_edukasi1 = (TextView)findViewById(R.id.text_edukasi1);
 
-        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
-        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
-        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
-        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
-        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
+        txt_hasil_nama2 = (TextView)findViewById(R.id.text_nama2);
+        txt_hasil_harga2 = (TextView)findViewById(R.id.text_harga2);
+        txt_hasil_akses2 = (TextView)findViewById(R.id.text_akses2);
+        txt_hasil_fasilitas2 = (TextView)findViewById(R.id.text_fasilitas2);
+        txt_hasil_edukasi2 = (TextView)findViewById(R.id.text_edukasi2);
 
-        txt_hasil_nama = (TextView)findViewById(R.id.text_nama1);
-        txt_hasil_harga = (TextView)findViewById(R.id.text_harga1);
-        txt_hasil_akses = (TextView)findViewById(R.id.text_akses1);
-        txt_hasil_fasilitas = (TextView)findViewById(R.id.text_fasilitas1);
-        txt_hasil_edukasi = (TextView)findViewById(R.id.text_edukasi1);
+        txt_hasil_nama3 = (TextView)findViewById(R.id.text_nama3);
+        txt_hasil_harga3 = (TextView)findViewById(R.id.text_harga3);
+        txt_hasil_akses3 = (TextView)findViewById(R.id.text_akses3);
+        txt_hasil_fasilitas3 = (TextView)findViewById(R.id.text_fasilitas3);
+        txt_hasil_edukasi3 = (TextView)findViewById(R.id.text_edukasi3);
 //        txt_hasil_url_gambar = (TextView)findViewById(R.id.text_url_gambar);
 
         linear1 = (LinearLayout)findViewById(R.id.linear1);
@@ -189,12 +191,24 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 deskripsiArray[i]=jsonTest.getString("deskripsi");
 
 
-                                txt_hasil_nama.setText(namaArray[0]);
-                                txt_hasil_harga.setText(hargaArray[0]);
-                                txt_hasil_akses.setText(aksesArray[0]);
-                                txt_hasil_fasilitas.setText(fasilitasArray[0]);
-                                txt_hasil_edukasi.setText(edukasiArray[0]);
+                                txt_hasil_nama1.setText(namaArray[0]);
+                                txt_hasil_harga1.setText(hargaArray[0]);
+                                txt_hasil_akses1.setText(aksesArray[0]);
+                                txt_hasil_fasilitas1.setText(fasilitasArray[0]);
+                                txt_hasil_edukasi1.setText(edukasiArray[0]);
 //                                txt_hasil_url_gambar.setText(gambarArray[1]);
+
+                                txt_hasil_nama2.setText(namaArray[1]);
+                                txt_hasil_harga2.setText(hargaArray[1]);
+                                txt_hasil_akses2.setText(aksesArray[1]);
+                                txt_hasil_fasilitas2.setText(fasilitasArray[1]);
+                                txt_hasil_edukasi2.setText(edukasiArray[1]);
+
+                                txt_hasil_nama3.setText(namaArray[2]);
+                                txt_hasil_harga3.setText(hargaArray[2]);
+                                txt_hasil_akses3.setText(aksesArray[2]);
+                                txt_hasil_fasilitas3.setText(fasilitasArray[2]);
+                                txt_hasil_edukasi3.setText(edukasiArray[2]);
 
 //                                namaArray[i] = name;
 //                                hargaArray[i] = harga;

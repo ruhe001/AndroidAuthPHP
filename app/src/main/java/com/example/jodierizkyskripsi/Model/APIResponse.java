@@ -1,4 +1,4 @@
-package com.example.androidauthphp.Model;
+package com.example.jodierizkyskripsi.Model;
 
 public class APIResponse {
     private boolean error;

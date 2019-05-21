@@ -1,4 +1,4 @@
-package com.example.androidauthphp;
+package com.example.jodierizkyskripsi;
 
 import org.junit.Test;
 
