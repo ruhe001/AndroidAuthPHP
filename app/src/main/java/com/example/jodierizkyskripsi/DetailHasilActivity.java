@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class DetailHasilActivity extends AppCompatActivity {
 
-    ImageView img_detail_tempat, img_detail_lokasi;
-    TextView txt_detail_nama, txt_detail_harga, txt_detail_deskripsi;
+    ImageView  img_detail_lokasi;
+    TextView img_detail_tempat,txt_detail_nama, txt_detail_harga, txt_detail_deskripsi;
 
     String detail_nama, detail_harga, detail_deskripsi, detail_lat, detail_long,gambar;
 
@@ -22,7 +22,7 @@ public class DetailHasilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_hasil);
 
-        img_detail_tempat = (ImageView)findViewById(R.id.image_detail_tempat);
+        img_detail_tempat = (TextView)findViewById(R.id.image_detail_tempat);
 //        img_detail_lokasi = (ImageView)findViewById(R.id.image_detail_lokasi);
 
 

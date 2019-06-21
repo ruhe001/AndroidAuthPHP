@@ -2,6 +2,7 @@ package com.example.jodierizkyskripsi;
 
 import android.content.Intent;
 import android.location.Location;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mService= Common.getAPI();
+        
 
-        btn_bobot=(Button) findViewById(R.id.btn_bobot);
-
-
-        btn_bobot.setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable(){
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,PembobotanActivity.class));
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity. */
+                Intent mainIntent = new Intent(MainActivity.this,PembobotanActivity.class);
+                startActivity(mainIntent);
+                finish();
             }
-        });
-
+        }, 3000);
     }
 
 

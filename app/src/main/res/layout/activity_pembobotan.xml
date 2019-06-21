@@ -8,70 +8,88 @@
     tools:context=".PembobotanActivity">
 
     <TextView
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bobot Harga"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_harga"
         android:inputType="number"
         />
 
     <TextView
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bobot Jarak"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_jarak"
         android:inputType="number"
         />
 
     <TextView
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bobot Kemudahan Akses"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_akses"
         android:inputType="number"
         />
 
     <TextView
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bobot Fasilitas"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_fasilitas"
         android:inputType="number"
         />
 
     <TextView
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bobot Nilai Edukasi"
         />
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_edukasi"
         android:inputType="number"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#fff"
+        android:background="@drawable/btn_background"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="`next"
         android:id="@+id/button_next_pembobotan"
         />
+
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:layout_margin="20dp"
+        android:text="abdjkasbdjkasbjkdbasjkb\najksdbjakbdkjabdkjas\nakjsdbkjasbdajkbdkjas\najksdkjadbkja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 
