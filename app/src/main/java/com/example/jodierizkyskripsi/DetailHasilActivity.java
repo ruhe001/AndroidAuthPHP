@@ -24,9 +24,8 @@ public class DetailHasilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_hasil);
-
         img_detail_tempat = (TextView)findViewById(R.id.image_detail_tempat);
-      img_detail_lokasi = (ImageView)findViewById(R.id.image_detail_lokasi);
+        img_detail_lokasi = (ImageView)findViewById(R.id.image_detail_lokasi);
 
 
         txt_detail_nama = (TextView)findViewById(R.id.text_detail_nama);

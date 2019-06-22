@@ -24,20 +24,20 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
     private TextView txt_hasil_nama1,txt_hasil_harga1,txt_hasil_akses1,txt_hasil_fasilitas1,txt_hasil_edukasi1,txt_hasil_url_gambar,
             txt_hasil_nama2,txt_hasil_harga2,txt_hasil_akses2,txt_hasil_fasilitas2,txt_hasil_edukasi2,
-    txt_hasil_nama3,txt_hasil_harga3,txt_hasil_akses3,txt_hasil_fasilitas3,txt_hasil_edukasi3;
+    txt_hasil_nama3,txt_hasil_harga3, txt_hasil_nama4,txt_hasil_harga4,txt_hasil_nama5,txt_hasil_harga5,txt_hasil_akses3,txt_hasil_fasilitas3,txt_hasil_edukasi3;
 
     String bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi, txt_latitude, txt_longitude;
-    private LinearLayout linear1, linear2, linear3;
+    private LinearLayout linear1, linear2, linear3,linear4, linear5;
 
-    String namaArray[] = new String[3];
-    String hargaArray[] = new String[3];
-    String aksesArray[] = new String[3];
-    String fasilitasArray[] = new String[3];
-    String edukasiArray[] = new String[3];
-    String latitudeArray[] = new String[3];
-    String longitudeArray[] = new String[3];
-    String gambarArray[] = new String[3];
-    String deskripsiArray[]= new String[3];
+    String namaArray[] = new String[5];
+    String hargaArray[] = new String[5];
+    String aksesArray[] = new String[5];
+    String fasilitasArray[] = new String[5];
+    String edukasiArray[] = new String[5];
+    String latitudeArray[] = new String[5];
+    String longitudeArray[] = new String[5];
+    String gambarArray[] = new String[5];
+    String deskripsiArray[]= new String[5];
 
     Button btn_next_hasil;
 
@@ -62,6 +62,14 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
         txt_hasil_nama3 = (TextView)findViewById(R.id.text_nama3);
         txt_hasil_harga3 = (TextView)findViewById(R.id.text_harga3);
+
+        txt_hasil_nama4 = (TextView)findViewById(R.id.text_nama4);
+        txt_hasil_harga4 = (TextView)findViewById(R.id.text_harga4);
+
+        txt_hasil_nama5 = (TextView)findViewById(R.id.text_nama5);
+        txt_hasil_harga5 = (TextView)findViewById(R.id.text_harga5);
+
+
         /*txt_hasil_akses3 = (TextView)findViewById(R.id.text_akses3);
         txt_hasil_fasilitas3 = (TextView)findViewById(R.id.text_fasilitas3);
         txt_hasil_edukasi3 = (TextView)findViewById(R.id.text_edukasi3);*/
@@ -70,6 +78,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
         linear1 = (LinearLayout)findViewById(R.id.linear1);
         linear2 = (LinearLayout)findViewById(R.id.linear2);
         linear3 = (LinearLayout)findViewById(R.id.linear3);
+        linear4 = (LinearLayout)findViewById(R.id.linear4);
+        linear5 = (LinearLayout)findViewById(R.id.linear5);
         Intent intent = getIntent();
 
         bobot_harga = intent.getStringExtra("bobot_harga");
@@ -95,9 +105,6 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[0]);
                 intentToDetail.putExtra("hasil_harga", hargaArray[0]);
-                intentToDetail.putExtra("hasil_akses", aksesArray[0]);
-                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[0]);
-                intentToDetail.putExtra("hasil_edukasi", edukasiArray[0]);
                 intentToDetail.putExtra("hasil_latitude", latitudeArray[0]);
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[0]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[0]);
@@ -116,9 +123,6 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[1]);
                 intentToDetail.putExtra("hasil_harga", hargaArray[1]);
-                intentToDetail.putExtra("hasil_akses", aksesArray[1]);
-                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[1]);
-                intentToDetail.putExtra("hasil_edukasi", edukasiArray[1]);
                 intentToDetail.putExtra("hasil_latitude", latitudeArray[1]);
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[1]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[1]);
@@ -139,13 +143,46 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[2]);
                 intentToDetail.putExtra("hasil_harga", hargaArray[2]);
-                intentToDetail.putExtra("hasil_akses", aksesArray[2]);
-                intentToDetail.putExtra("hasil_fasilitas", fasilitasArray[2]);
-                intentToDetail.putExtra("hasil_edukasi", edukasiArray[2]);
                 intentToDetail.putExtra("hasil_latitude", latitudeArray[2]);
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[2]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[2]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[2]);
+                startActivity(intentToDetail);
+
+            }
+        });
+        linear4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
+
+                //Intent Bobot
+                intentToDetail.putExtra("hasil_nama", namaArray[3]);
+                intentToDetail.putExtra("hasil_harga", hargaArray[3]);
+                intentToDetail.putExtra("hasil_latitude", latitudeArray[3]);
+                intentToDetail.putExtra("hasil_longitude", longitudeArray[3]);
+                intentToDetail.putExtra("hasil_gambar", gambarArray[3]);
+                intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[3]);
+                startActivity(intentToDetail);
+
+            }
+        });
+        linear5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
+
+                //Intent Bobot
+                intentToDetail.putExtra("hasil_nama", namaArray[4]);
+                intentToDetail.putExtra("hasil_harga", hargaArray[4]);
+                intentToDetail.putExtra("hasil_latitude", latitudeArray[4]);
+                intentToDetail.putExtra("hasil_longitude", longitudeArray[4]);
+                intentToDetail.putExtra("hasil_gambar", gambarArray[4]);
+                intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[4]);
                 startActivity(intentToDetail);
 
             }
@@ -164,7 +201,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 +"&akses="+bobot_akses
                 +"&fasilitas="+bobot_fasilitas
                 +"&edukasi="+bobot_edukasi
-                +"&jum_rekomendasi=3";
+                +"&jum_rekomendasi=5";
 
          JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -206,6 +243,12 @@ public class HasilTopsisActivity extends AppCompatActivity {
                                 txt_hasil_fasilitas3.setText(fasilitasArray[2]);
                                 txt_hasil_edukasi3.setText(edukasiArray[2]);*/
 
+                                txt_hasil_nama4.setText(namaArray[3]);
+                                txt_hasil_harga4.setText("Harga Tiket Masuk: Rp"+hargaArray[3]);
+
+                                txt_hasil_nama5.setText(namaArray[4]);
+                                txt_hasil_harga5.setText("Harga Tiket Masuk: Rp"+hargaArray[4]);
+
 
                             }
 
@@ -226,10 +269,4 @@ public class HasilTopsisActivity extends AppCompatActivity {
         mQueue.add(request);
     }
 
-//    @Override
-//    public void finish(){
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-//
-//    }
 }
