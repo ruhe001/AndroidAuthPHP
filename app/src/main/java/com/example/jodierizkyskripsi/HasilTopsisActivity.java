@@ -50,21 +50,21 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
         txt_hasil_nama1 = (TextView)findViewById(R.id.text_nama1);
         txt_hasil_harga1 = (TextView)findViewById(R.id.text_harga1);
-        txt_hasil_akses1 = (TextView)findViewById(R.id.text_akses1);
+        /*txt_hasil_akses1 = (TextView)findViewById(R.id.text_akses1);
         txt_hasil_fasilitas1 = (TextView)findViewById(R.id.text_fasilitas1);
-        txt_hasil_edukasi1 = (TextView)findViewById(R.id.text_edukasi1);
+        txt_hasil_edukasi1 = (TextView)findViewById(R.id.text_edukasi1);*/
 
         txt_hasil_nama2 = (TextView)findViewById(R.id.text_nama2);
         txt_hasil_harga2 = (TextView)findViewById(R.id.text_harga2);
-        txt_hasil_akses2 = (TextView)findViewById(R.id.text_akses2);
+        /*txt_hasil_akses2 = (TextView)findViewById(R.id.text_akses2);
         txt_hasil_fasilitas2 = (TextView)findViewById(R.id.text_fasilitas2);
-        txt_hasil_edukasi2 = (TextView)findViewById(R.id.text_edukasi2);
+        txt_hasil_edukasi2 = (TextView)findViewById(R.id.text_edukasi2);*/
 
         txt_hasil_nama3 = (TextView)findViewById(R.id.text_nama3);
         txt_hasil_harga3 = (TextView)findViewById(R.id.text_harga3);
-        txt_hasil_akses3 = (TextView)findViewById(R.id.text_akses3);
+        /*txt_hasil_akses3 = (TextView)findViewById(R.id.text_akses3);
         txt_hasil_fasilitas3 = (TextView)findViewById(R.id.text_fasilitas3);
-        txt_hasil_edukasi3 = (TextView)findViewById(R.id.text_edukasi3);
+        txt_hasil_edukasi3 = (TextView)findViewById(R.id.text_edukasi3);*/
 //        txt_hasil_url_gambar = (TextView)findViewById(R.id.text_url_gambar);
 
         linear1 = (LinearLayout)findViewById(R.id.linear1);
@@ -92,8 +92,6 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
                 Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
 
-
-
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[0]);
                 intentToDetail.putExtra("hasil_harga", hargaArray[0]);
@@ -114,8 +112,6 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
 
                 Intent intentToDetail = new Intent(view.getContext(), DetailHasilActivity.class);
-
-
 
                 //Intent Bobot
                 intentToDetail.putExtra("hasil_nama", namaArray[1]);
@@ -192,24 +188,23 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
 
                                 txt_hasil_nama1.setText(namaArray[0]);
-                                txt_hasil_harga1.setText(hargaArray[0]);
-                                txt_hasil_akses1.setText(aksesArray[0]);
+                                txt_hasil_harga1.setText("Harga Tiket Masuk: Rp"+hargaArray[0]);
+/*                                txt_hasil_akses1.setText(aksesArray[0]);
                                 txt_hasil_fasilitas1.setText(fasilitasArray[0]);
                                 txt_hasil_edukasi1.setText(edukasiArray[0]);
-//                                txt_hasil_url_gambar.setText(gambarArray[1]);
+//                                txt_hasil_url_gambar.setText(gambarArray[1]);*/
 
                                 txt_hasil_nama2.setText(namaArray[1]);
-                                txt_hasil_harga2.setText(hargaArray[1]);
-                                txt_hasil_akses2.setText(aksesArray[1]);
+                                txt_hasil_harga2.setText("Harga Tiket Masuk: Rp"+hargaArray[1]);
+                                /*txt_hasil_akses2.setText(aksesArray[1]);
                                 txt_hasil_fasilitas2.setText(fasilitasArray[1]);
-                                txt_hasil_edukasi2.setText(edukasiArray[1]);
+                                txt_hasil_edukasi2.setText(edukasiArray[1]);*/
 
                                 txt_hasil_nama3.setText(namaArray[2]);
-                                txt_hasil_harga3.setText(hargaArray[2]);
-                                txt_hasil_akses3.setText(aksesArray[2]);
+                                txt_hasil_harga3.setText("Harga Tiket Masuk: Rp"+hargaArray[2]);
+                                /*txt_hasil_akses3.setText(aksesArray[2]);
                                 txt_hasil_fasilitas3.setText(fasilitasArray[2]);
-                                txt_hasil_edukasi3.setText(edukasiArray[2]);
-
+                                txt_hasil_edukasi3.setText(edukasiArray[2]);*/
 
 
                             }

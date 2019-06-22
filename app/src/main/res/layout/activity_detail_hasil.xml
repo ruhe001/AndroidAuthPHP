@@ -7,51 +7,64 @@
     android:orientation="vertical"
     tools:context=".DetailHasilActivity">
 
-    <ImageView
-         android:layout_margin="10dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-         android:id="@+id/image_detail_lokasi"
-        />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/image_detail_lokasi"
+                />
 
-    <TextView
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama"
-        android:id="@+id/text_detail_nama"
-        />
-    <TextView
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Harga"
-        android:id="@+id/text_detail_harga"
-        />
-    <TextView
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kadaluarsa"
-        android:id="@+id/text_detail_deskripsi"
-        />
+            <TextView
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama"
+                android:id="@+id/text_detail_nama"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Harga"
+                android:id="@+id/text_detail_harga"
 
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#fff"
-        android:background="@drawable/btn_background"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Maasdhasbp"
-        android:id="@+id/image_detail_tempat"
-        />
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:id="@+id/text_detail_deskripsi"
+                />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="#fff"
+                android:background="@drawable/btn_background"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Rute Menuju Lokasi"
+                android:id="@+id/image_detail_tempat"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
