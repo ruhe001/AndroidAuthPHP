@@ -231,7 +231,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingRight="20dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/gambar4"/>
 
                     <TextView
                         android:id="@+id/text_nama4"

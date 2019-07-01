@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
     private TextView txt_hasil_nama1,txt_hasil_harga1,txt_hasil_akses1,txt_hasil_fasilitas1,txt_hasil_edukasi1,txt_hasil_url_gambar,
             txt_hasil_nama2,txt_hasil_harga2,txt_hasil_akses2,txt_hasil_fasilitas2,txt_hasil_edukasi2,
     txt_hasil_nama3,txt_hasil_harga3, txt_hasil_nama4,txt_hasil_harga4,txt_hasil_nama5,txt_hasil_harga5,txt_hasil_akses3,txt_hasil_fasilitas3,txt_hasil_edukasi3;
-
+    ImageView gambar4;
     String bobot_harga, bobot_jarak, bobot_akses, bobot_fasilitas, bobot_edukasi, txt_latitude, txt_longitude;
     private LinearLayout linear1, linear2, linear3,linear4, linear5;
 
@@ -50,6 +51,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
         txt_hasil_nama1 = (TextView)findViewById(R.id.text_nama1);
         txt_hasil_harga1 = (TextView)findViewById(R.id.text_harga1);
+        gambar4 = (ImageView) findViewById(R.id.gambar4);
         /*txt_hasil_akses1 = (TextView)findViewById(R.id.text_akses1);
         txt_hasil_fasilitas1 = (TextView)findViewById(R.id.text_fasilitas1);
         txt_hasil_edukasi1 = (TextView)findViewById(R.id.text_edukasi1);*/
@@ -193,7 +195,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
                            String bobot_harga, String bobot_jarak,
                            String bobot_akses, String bobot_fasilitas, String bobot_edukasi){
 
-        String url = "http://topsisfhj.xyz/TOPSIS_WISATA_BATU/topsis_wisata.php?"
+        String url = "https://topsisfhj.xyz/TOPSIS_WISATA_BATU/topsis_wisata.php?"
                 +"lat="+txtLatitude
                 +"&long="+txtLongitude
                 +"&harga="+bobot_harga
@@ -245,7 +247,7 @@ public class HasilTopsisActivity extends AppCompatActivity {
 
                                 txt_hasil_nama4.setText(namaArray[3]);
                                 txt_hasil_harga4.setText("Harga Tiket Masuk: Rp"+hargaArray[3]);
-
+                                gambar4.setImageResource(R.drawable.nomor1);
                                 txt_hasil_nama5.setText(namaArray[4]);
                                 txt_hasil_harga5.setText("Harga Tiket Masuk: Rp"+hargaArray[4]);
 
