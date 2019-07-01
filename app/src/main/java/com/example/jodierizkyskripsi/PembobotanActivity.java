@@ -138,7 +138,7 @@ public class PembobotanActivity extends AppCompatActivity implements
                 }
                 else if(connected==false){
 
-                    Toast.makeText(getApplicationContext(),"Tidak ada internet atau! Aktifkan internet dan restart aplikasi",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Tidak ada koneksi internet! Pastikan koneksi internet aktif dan lakukan restart aplikasi",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     String text_edt_harga= edt_harga.getText().toString();
@@ -213,7 +213,7 @@ public class PembobotanActivity extends AppCompatActivity implements
             latd = String.valueOf(latitude);
             longd = String.valueOf(longitude);
         } else {
-            Toast.makeText(getApplicationContext(),"Everything Seems Fine",Toast.LENGTH_LONG).show();// Set your own toast  message
+            //Toast.makeText(getApplicationContext(),"Everything Seems Fine",Toast.LENGTH_LONG).show();// Set your own toast  message
         }
     }
 
@@ -282,9 +282,9 @@ public class PembobotanActivity extends AppCompatActivity implements
 
     private void showGPSDisabledAlertToUser(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("GPS is disabled in your device. Would you like to enable it?")
+        alertDialogBuilder.setMessage("GPS sedang tidak aktif. Aktifkan GPS?")
                 .setCancelable(false)
-                .setPositiveButton("Goto Settings Page To Enable GPS",
+                .setPositiveButton("Lihat di Settings untuk mengaktifkan GPS",
                         new DialogInterface.OnClickListener(){
                             public void onClick(DialogInterface dialog, int id){
                                 Intent callGPSSettingIntent = new Intent(
