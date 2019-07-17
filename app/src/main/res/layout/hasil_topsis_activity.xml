@@ -55,14 +55,14 @@
                         android:layout_gravity="center"
                         android:text="Harga Tiket Masuk" />
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/text_CI1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Nilai CI" />
 
-                    <!--<TextView
+                    <TextView
                         android:id="@+id/text_fasilitas1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

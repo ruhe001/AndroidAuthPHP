@@ -154,6 +154,8 @@ public class PembobotanActivity extends AppCompatActivity implements
                     final String bobotAksesFinal = String.valueOf(hitung_akses1);
                     final String bobotFasilitasFinal = String.valueOf(hitung_fasilitas1);
                     final String bobotEdukasiFinal = String.valueOf(hitung_edukasi1);
+                    buatPermintaanLokasi();
+                    temukanLokasi();
 
                     Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 

@@ -16,7 +16,7 @@ public class DetailHasilActivity extends AppCompatActivity {
     ImageView gambarTempat;
     TextView tombolPeta, txt_rinci_nama, txt_rinci_harga, txt_rinci_desk;
 
-    String detail_nama, detail_harga, detail_deskripsi, detail_lat, detail_long,gambar;
+    String detail_nama, detail_harga, detail_deskripsi, detail_lat, detail_long,gambar,current_lat,current_long;
 
 
 
@@ -40,6 +40,8 @@ public class DetailHasilActivity extends AppCompatActivity {
         detail_lat = TOPSISintent.getStringExtra("hasil_latitude");
         detail_long= TOPSISintent.getStringExtra("hasil_longitude");
         gambar = TOPSISintent.getStringExtra("hasil_gambar");
+        current_lat = TOPSISintent.getStringExtra("current_lat");
+        current_long = TOPSISintent.getStringExtra("current_long");
 
        Picasso.get().load(gambar).into(gambarTempat);
         if (detail_nama != null){
@@ -61,7 +63,7 @@ public class DetailHasilActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (detail_nama != null) {
                     Intent PETAinten = new Intent(android.content.Intent.ACTION_VIEW,
-                            Uri.parse("http://maps.google.com/maps?daddr=" + detail_lat + "," + detail_long));
+                            Uri.parse("http://maps.google.com/maps?saddr=+" +current_lat +"," +current_long +"&daddr=" + detail_lat + "," + detail_long));
 
                     PETAinten.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
                     startActivity(PETAinten);
