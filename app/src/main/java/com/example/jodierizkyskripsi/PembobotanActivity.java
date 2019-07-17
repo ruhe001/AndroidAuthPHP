@@ -82,23 +82,23 @@ public class PembobotanActivity extends AppCompatActivity implements
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
 
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-//                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            //CEK PERMISSION
-//            ActivityCompat.requestPermissions(this, new String[]{
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION
-//            }, KODE_RIKUES_PERMISION);
-//        } else {
-//            if (cekLayananGplay()) {
-//                buatKlienGoogleAPI();
-//                buatPermintaanLokasi();
-//            }
-//        }
-        if (cekLayananGplay()) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //CEK PERMISSION
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            }, KODE_RIKUES_PERMISION);
+        } else {
+            if (cekLayananGplay()) {
                 buatKlienGoogleAPI();
                 buatPermintaanLokasi();
+          }
         }
+//        if (cekLayananGplay()) {
+//                buatKlienGoogleAPI();
+//                buatPermintaanLokasi();
+//        }
 
         temukanLokasi();
 
