@@ -14,16 +14,42 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="Bobot Harga"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_harga"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:inputType="number"
+        android:gravity="center"
+        android:layout_gravity="center"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Bobot Harga"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+
+        <Button
+            android:id="@+id/decreaseHarga"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:text="Decrease" />
+
+        <TextView
+            android:id="@+id/edit_harga"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/increaseHarga"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:text="Increase" />
+    </LinearLayout>
     <TextView
         android:textColor="@color/colorPrimary"
         android:layout_width="match_parent"

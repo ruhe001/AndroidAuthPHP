@@ -34,12 +34,13 @@ public class PembobotanActivity extends AppCompatActivity implements
 
     private static final int KODE_RIKUES_PERMISION = 7171;
     private static final int KODE_GPLAY_RESOLUSI = 7172;
-
+    int numtest,number=3;
     private TextView txt_lokasi;
-    EditText edt_harga, edt_jarak, edt_akses , edt_fasilitas, edt_edukasi;
+    EditText  edt_jarak, edt_akses , edt_fasilitas, edt_edukasi;
+    TextView edt_harga;
     Button  btn_bobot_next;
     private boolean permintaanUpdateLokasi = false;
-
+    Button increaseHarga, decreaseHarga;
     private LocationRequest memintaLokasi;
     private GoogleApiClient mGoogleApiClient;
     private Location lokasiTerakhir;
@@ -73,8 +74,10 @@ public class PembobotanActivity extends AppCompatActivity implements
         else {
             connected = false;
         }
+        decreaseHarga = findViewById(R.id.decreaseHarga);
+        increaseHarga = findViewById(R.id.increaseHarga);
 
-        edt_harga = (EditText)findViewById(R.id.edit_harga);
+        edt_harga = findViewById(R.id.edit_harga);
         edt_jarak = (EditText)findViewById(R.id.edit_jarak);
         edt_akses = (EditText)findViewById(R.id.edit_akses);
         edt_fasilitas = (EditText)findViewById(R.id.edit_fasilitas);
@@ -82,6 +85,7 @@ public class PembobotanActivity extends AppCompatActivity implements
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
 
+        edt_harga.setText(Integer.toString(number));
 //        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
 //                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 //            //CEK PERMISSION
@@ -100,7 +104,41 @@ public class PembobotanActivity extends AppCompatActivity implements
                 buatPermintaanLokasi();
         }
 
-        temukanLokasi();
+
+
+
+        increaseHarga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view){
+                if(number<5) {
+                    increaseHarga.setVisibility(View.VISIBLE);
+                    number += 1;
+                    decreaseHarga.setVisibility(View.VISIBLE);
+
+                    edt_harga.setText(number + "");
+                }else if (number==5){
+                    increaseHarga.setVisibility(View.INVISIBLE);
+                }
+            }
+
+
+        });
+        decreaseHarga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view){
+                if(number>1) {
+                    decreaseHarga.setVisibility(View.VISIBLE);
+                    number -= 1;
+                    increaseHarga.setVisibility(View.VISIBLE);
+
+                    edt_harga.setText(number + "");
+                }else if (number==1){
+                    decreaseHarga.setVisibility(View.INVISIBLE);
+                }
+            }
+
+
+        });
 
         btn_bobot_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +192,7 @@ public class PembobotanActivity extends AppCompatActivity implements
                     final String bobotAksesFinal = String.valueOf(hitung_akses1);
                     final String bobotFasilitasFinal = String.valueOf(hitung_fasilitas1);
                     final String bobotEdukasiFinal = String.valueOf(hitung_edukasi1);
+                    temukanLokasi();
 
                     Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
@@ -194,6 +233,7 @@ public class PembobotanActivity extends AppCompatActivity implements
             return;
         }
         lokasiTerakhir = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        mulaiUpdateLokasi();
         if (lokasiTerakhir != null) {
 
             double bujur = lokasiTerakhir.getLatitude();
@@ -289,5 +329,7 @@ public class PembobotanActivity extends AppCompatActivity implements
         alert.show();
     }
 
+
 }
+
 

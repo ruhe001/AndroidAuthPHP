@@ -98,6 +98,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[0]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[0]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[0]);
+                intentToDetail.putExtra("current_lat",txt_latitude);
+                intentToDetail.putExtra("current_long",txt_longitude);
                 startActivity(intentToDetail);
 
             }
@@ -115,6 +117,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[1]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[1]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[1]);
+                intentToDetail.putExtra("current_lat",txt_latitude);
+                intentToDetail.putExtra("current_long",txt_longitude);
                 startActivity(intentToDetail);
 
             }
@@ -133,6 +137,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[2]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[2]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[2]);
+                intentToDetail.putExtra("current_lat",txt_latitude);
+                intentToDetail.putExtra("current_long",txt_longitude);
                 startActivity(intentToDetail);
 
             }
@@ -151,6 +157,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[3]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[3]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[3]);
+                intentToDetail.putExtra("current_lat",txt_latitude);
+                intentToDetail.putExtra("current_long",txt_longitude);
                 startActivity(intentToDetail);
 
             }
@@ -168,6 +176,8 @@ public class HasilTopsisActivity extends AppCompatActivity {
                 intentToDetail.putExtra("hasil_longitude", longitudeArray[4]);
                 intentToDetail.putExtra("hasil_gambar", gambarArray[4]);
                 intentToDetail.putExtra("hasil_deskripsi",deskripsiArray[4]);
+                intentToDetail.putExtra("current_lat",txt_latitude);
+                intentToDetail.putExtra("current_long",txt_longitude);
                 startActivity(intentToDetail);
 
             }
