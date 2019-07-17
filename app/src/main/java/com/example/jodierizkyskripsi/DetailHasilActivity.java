@@ -13,8 +13,8 @@ import com.squareup.picasso.Picasso;
 
 public class DetailHasilActivity extends AppCompatActivity {
 
-    ImageView  img_detail_lokasi;
-    TextView img_detail_tempat,txt_detail_nama, txt_detail_harga, txt_detail_deskripsi;
+    ImageView gambarTempat;
+    TextView tombolPeta, txt_rinci_nama, txt_rinci_harga, txt_rinci_desk;
 
     String detail_nama, detail_harga, detail_deskripsi, detail_lat, detail_long,gambar;
 
@@ -23,54 +23,53 @@ public class DetailHasilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_hasil);
-        img_detail_tempat = (TextView)findViewById(R.id.image_detail_tempat);
-        img_detail_lokasi = (ImageView)findViewById(R.id.image_detail_lokasi);
+        setContentView(R.layout.hasil_rinci_activity);
+        tombolPeta = (TextView)findViewById(R.id.tombol_peta);
+        gambarTempat = (ImageView)findViewById(R.id.image_detail_lokasi);
 
 
-        txt_detail_nama = (TextView)findViewById(R.id.text_detail_nama);
-        txt_detail_harga = (TextView)findViewById(R.id.text_detail_harga);
-        txt_detail_deskripsi = (TextView)findViewById(R.id.text_detail_deskripsi);
+        txt_rinci_nama = (TextView)findViewById(R.id.tulisan_rinci_nama);
+        txt_rinci_harga = (TextView)findViewById(R.id.tulisan_rinci_harga);
+        txt_rinci_desk = (TextView)findViewById(R.id.tulisan_rinci_deskripsi);
 
-        Intent intent = getIntent();
+        Intent TOPSISintent = getIntent();
 
-        detail_nama = intent.getStringExtra("hasil_nama");
-        detail_harga = intent.getStringExtra("hasil_harga");
-        detail_deskripsi = intent.getStringExtra("hasil_deskripsi");
-        detail_lat = intent.getStringExtra("hasil_latitude");
-        detail_long= intent.getStringExtra("hasil_longitude");
-        gambar = intent.getStringExtra("hasil_gambar");
+        detail_nama = TOPSISintent.getStringExtra("hasil_nama");
+        detail_harga = TOPSISintent.getStringExtra("hasil_harga");
+        detail_deskripsi = TOPSISintent.getStringExtra("hasil_deskripsi");
+        detail_lat = TOPSISintent.getStringExtra("hasil_latitude");
+        detail_long= TOPSISintent.getStringExtra("hasil_longitude");
+        gambar = TOPSISintent.getStringExtra("hasil_gambar");
 
-       Picasso.get().load(gambar).into(img_detail_lokasi);
+       Picasso.get().load(gambar).into(gambarTempat);
         if (detail_nama != null){
-            txt_detail_nama.setText(detail_nama);
-            txt_detail_harga.setText("Tiket Masuk: Rp"+detail_harga);
-            txt_detail_deskripsi.setText(detail_deskripsi);
+            txt_rinci_nama.setText(detail_nama);
+            txt_rinci_harga.setText("Tiket Masuk: Rp"+detail_harga);
+            txt_rinci_desk.setText(detail_deskripsi);
 
         } else{
-            txt_detail_nama.setText("Tidak dapat menemukan informasi.\n Pastikan koneksi internet aktif lalu restart aplikasi!");
-            txt_detail_harga.setText("");
-            txt_detail_deskripsi.setText("");
+            txt_rinci_nama.setText("Tidak dapat menemukan informasi.\n Pastikan koneksi internet aktif lalu restart aplikasi!");
+            txt_rinci_harga.setText("");
+            txt_rinci_desk.setText("");
         }
 
 
 
-        img_detail_tempat.setOnClickListener(new View.OnClickListener() {
+        tombolPeta.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 if (detail_nama != null) {
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Intent PETAinten = new Intent(android.content.Intent.ACTION_VIEW,
                             Uri.parse("http://maps.google.com/maps?daddr=" + detail_lat + "," + detail_long));
 
-                    intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                    startActivity(intent);
+                    PETAinten.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                    startActivity(PETAinten);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Tidak dapat menemukan informasi. Pastikan informasi ditemukan dan restart aplikasi!",Toast.LENGTH_SHORT).show();
 
                 }
-
             }
         });
     }

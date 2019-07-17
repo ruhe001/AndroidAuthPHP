@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama"
-                android:id="@+id/text_detail_nama"
+                android:id="@+id/tulisan_rinci_nama"
                 />
             <TextView
                 android:layout_gravity="center"
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Harga"
-                android:id="@+id/text_detail_harga"
+                android:id="@+id/tulisan_rinci_harga"
 
                 />
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Deskripsi"
-                android:id="@+id/text_detail_deskripsi"
+                android:id="@+id/tulisan_rinci_deskripsi"
                 />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:text="Rute Menuju Lokasi"
-                android:id="@+id/image_detail_tempat"
+                android:id="@+id/tombol_peta"
 
                 />
         </LinearLayout>

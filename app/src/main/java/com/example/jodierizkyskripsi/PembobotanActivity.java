@@ -32,60 +32,48 @@ import com.google.android.gms.location.LocationServices;
 public class PembobotanActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
-    private static final int MY_PERMISSION_REQUEST_CODE = 7171;
-    private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 7172;
+    private static final int KODE_RIKUES_PERMISION = 7171;
+    private static final int KODE_GPLAY_RESOLUSI = 7172;
 
     private TextView txt_lokasi;
     EditText edt_harga, edt_jarak, edt_akses , edt_fasilitas, edt_edukasi;
     Button  btn_bobot_next;
-    private boolean mRequestingLocationUpdates = false;
+    private boolean permintaanUpdateLokasi = false;
 
-    private LocationRequest mLocationRequest;
+    private LocationRequest memintaLokasi;
     private GoogleApiClient mGoogleApiClient;
-    private Location mLastLocation;
+    private Location lokasiTerakhir;
 
-    private static int UPDATE_INTERVAL = 5000; //SEC
-    private static int FASTEST_INTERVAL = 3000; //SEC
-    private static int DISPLACEMENT = 10; //METERS
+    private static int interval_pembaruan = 5000; //SEC
+    private static int interval_tercepat = 3000; //SEC
+    private static int perpindahan = 10; //METERS
 
     String latd, longd;
     boolean connected = false;
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (checkPlayServices())
-                        buildGoogleApiClient();
-                }
-                break;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembobotan);
 
-       LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE );
+       LocationManager lokasimenejer = (LocationManager) getSystemService(LOCATION_SERVICE );
 
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        if (lokasimenejer.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             Toast.makeText(this, "GPS aktif", Toast.LENGTH_SHORT).show();
         }else{
-            showGPSDisabledAlertToUser();
+            notifikasiGPSbelumAKTIF();
         }
 
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cekKoneksi = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+        if(cekKoneksi.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                cekKoneksi.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             connected = true;
         }
         else {
             connected = false;
         }
+
         edt_harga = (EditText)findViewById(R.id.edit_harga);
         edt_jarak = (EditText)findViewById(R.id.edit_jarak);
         edt_akses = (EditText)findViewById(R.id.edit_akses);
@@ -94,23 +82,25 @@ public class PembobotanActivity extends AppCompatActivity implements
 
         btn_bobot_next = (Button)findViewById(R.id.button_next_pembobotan);
 
-
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //RUNTIME REQUEST PERMISSION
-            ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-            }, MY_PERMISSION_REQUEST_CODE);
-        } else {
-            if (checkPlayServices()) {
-                buildGoogleApiClient();
-                createLocationRequest();
-            }
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            //CEK PERMISSION
+//            ActivityCompat.requestPermissions(this, new String[]{
+//                    Manifest.permission.ACCESS_FINE_LOCATION,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION
+//            }, KODE_RIKUES_PERMISION);
+//        } else {
+//            if (cekLayananGplay()) {
+//                buatKlienGoogleAPI();
+//                buatPermintaanLokasi();
+//            }
+//        }
+        if (cekLayananGplay()) {
+                buatKlienGoogleAPI();
+                buatPermintaanLokasi();
         }
 
-        displayLocation();
+        temukanLokasi();
 
         btn_bobot_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +157,7 @@ public class PembobotanActivity extends AppCompatActivity implements
 
                     Intent intentToHasilTopsis = new Intent(view.getContext(), HasilTopsisActivity.class);
 
-                    //Intent Bobot
+
                     intentToHasilTopsis.putExtra("bobot_harga", bobotHargaFinal);
                     intentToHasilTopsis.putExtra("bobot_jarak", bobotJarakFinal);
                     intentToHasilTopsis.putExtra("bobot_akses", bobotAksesFinal);
@@ -188,7 +178,6 @@ public class PembobotanActivity extends AppCompatActivity implements
         super.onStart();
         if(mGoogleApiClient != null)
             mGoogleApiClient.connect();
-
     }
     @Override
     protected void onStop(){
@@ -198,46 +187,44 @@ public class PembobotanActivity extends AppCompatActivity implements
         super.onStop();
     }
 
-    private void displayLocation() {
+    private void temukanLokasi() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             return;
         }
-        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null) {
+        lokasiTerakhir = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (lokasiTerakhir != null) {
 
-            double latitude = mLastLocation.getLatitude();
-            double longitude = mLastLocation.getLongitude();
+            double bujur = lokasiTerakhir.getLatitude();
+            double lintang = lokasiTerakhir.getLongitude();
             //txt_lokasi.setText(latitude + " / " + longitude);
-            latd = String.valueOf(latitude);
-            longd = String.valueOf(longitude);
+            latd = String.valueOf(bujur);
+            longd = String.valueOf(lintang);
         } else {
             //Toast.makeText(getApplicationContext(),"Everything Seems Fine",Toast.LENGTH_LONG).show();// Set your own toast  message
         }
     }
 
-    private void startLocationUpdates() {
+    private void mulaiUpdateLokasi() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             return;
         }
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, memintaLokasi, this);
     }
-    private void stopLocationUpdates() {
-        LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-    }
-    private void buildGoogleApiClient(){
+
+    private void buatKlienGoogleAPI(){
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API).build();
     }
-    private boolean checkPlayServices(){
+    private boolean cekLayananGplay(){
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if (resultCode != ConnectionResult.SUCCESS){
             if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)){
-                GooglePlayServicesUtil.getErrorDialog(resultCode,this,PLAY_SERVICES_RESOLUTION_REQUEST).show();
+                GooglePlayServicesUtil.getErrorDialog(resultCode,this, KODE_GPLAY_RESOLUSI).show();
             }
             else{
                 Toast.makeText(getApplicationContext(), "Perangkat tidak didukung", Toast.LENGTH_LONG).show();
@@ -247,26 +234,26 @@ public class PembobotanActivity extends AppCompatActivity implements
         }
         return true;
     }
-    private void createLocationRequest(){
-        mLocationRequest= new LocationRequest();
-        mLocationRequest.setInterval(UPDATE_INTERVAL);
-        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setSmallestDisplacement(DISPLACEMENT);
+    private void buatPermintaanLokasi(){
+        memintaLokasi = new LocationRequest();
+        memintaLokasi.setInterval(interval_pembaruan);
+        memintaLokasi.setFastestInterval(interval_tercepat);
+        memintaLokasi.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        memintaLokasi.setSmallestDisplacement(perpindahan);
     }
 
 
     @Override
     public void onLocationChanged(Location location) {
-        mLastLocation = location;
-        displayLocation();
+        lokasiTerakhir = location;
+        temukanLokasi();
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        displayLocation();
-        if(mRequestingLocationUpdates)
-            startLocationUpdates();
+        temukanLokasi();
+        if(permintaanUpdateLokasi)
+            mulaiUpdateLokasi();
     }
 
 
@@ -280,7 +267,7 @@ public class PembobotanActivity extends AppCompatActivity implements
 
     }
 
-    private void showGPSDisabledAlertToUser(){
+    private void notifikasiGPSbelumAKTIF(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("GPS sedang tidak aktif. Aktifkan GPS?")
                 .setCancelable(false)
@@ -301,7 +288,6 @@ public class PembobotanActivity extends AppCompatActivity implements
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
-
 
 }
 

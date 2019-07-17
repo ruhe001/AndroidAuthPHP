@@ -27,11 +27,17 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:adjustViewBounds="true"
+                        android:maxWidth="42dp"
+                        android:maxHeight="42dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginLeft="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingRight="20dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/gambar1"/>
 
                     <TextView
                         android:id="@+id/text_nama1"
@@ -49,14 +55,14 @@
                         android:layout_gravity="center"
                         android:text="Harga Tiket Masuk" />
 
-                    <!--<TextView
-                        android:id="@+id/text_akses1"
+                    <TextView
+                        android:id="@+id/text_CI1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Kemudahan Akses" />
+                        android:text="Nilai CI" />
 
-                    <TextView
+                    <!--<TextView
                         android:id="@+id/text_fasilitas1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -93,11 +99,19 @@
                     android:orientation="vertical">
 
                     <ImageView
+
+                        android:adjustViewBounds="true"
+                        android:maxWidth="42dp"
+                        android:maxHeight="42dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginLeft="3dp"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingRight="20dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/gambar2"/>
 
                     <TextView
                         android:id="@+id/text_nama2"
@@ -160,11 +174,17 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:adjustViewBounds="true"
+                        android:maxWidth="42dp"
+                        android:maxHeight="42dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginLeft="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingRight="20dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/gambar3"/>
 
                     <TextView
                         android:id="@+id/text_nama3"
@@ -227,6 +247,11 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:adjustViewBounds="true"
+                        android:maxWidth="42dp"
+                        android:maxHeight="42dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginLeft="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -294,11 +319,17 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:adjustViewBounds="true"
+                        android:maxWidth="42dp"
+                        android:maxHeight="42dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginLeft="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:paddingRight="20dp"
-                        android:src="@mipmap/ic_launcher" />
+                        android:src="@mipmap/ic_launcher"
+                        android:id="@+id/gambar5"/>
 
                     <TextView
                         android:id="@+id/text_nama5"
